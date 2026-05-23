@@ -1,0 +1,293 @@
+/* ── Reset y base ─────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: #f4ffe5; /* Fondo visual principal ultra suave */
+  color: #1d3300;     /* Texto principal en verde oscuro formal */
+  min-height: 100vh;
+}
+
+a { color: #447800; text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ── Barra de navegación ──────────────────────────────────── */
+nav {
+  background: #1d3300; /* Fondo de navegación principal */
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 58px;
+  box-shadow: 0 2px 8px rgba(29, 51, 0, 0.2);
+}
+
+nav .brand {
+  color: #ffffff;
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: .5px;
+}
+
+nav .brand span {
+  color: #e9ffcc; /* Acento claro para el logo */
+}
+
+nav .nav-link {
+  color: #e9ffcc;
+  font-size: .9rem;
+  padding: .4rem .9rem;
+  border-radius: 6px;
+  transition: background .2s;
+}
+
+nav .nav-link:hover {
+  background: rgba(233, 255, 204, 0.15);
+  text-decoration: none;
+  color: #ffffff;
+}
+
+/* ── Contenedor principal ─────────────────────────────────── */
+.container {
+  max-width: 860px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+/* ── Mensajes de error (Mantenidos por regla de negocio) ──── */
+.errors {
+  background: #fee2e2;
+  border-left: 4px solid #ef4444;
+  border-radius: 6px;
+  padding: .8rem 1.2rem;
+  margin-bottom: 1.2rem;
+  list-style: disc inside;
+  font-size: .92rem;
+  color: #991b1b;
+}
+
+/* ── Filtro por categoría ─────────────────────────────────── */
+.filter-bar {
+  display: flex;
+  gap: .5rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+}
+
+.filter-bar a {
+  padding: .35rem .9rem;
+  border-radius: 20px;
+  font-size: .85rem;
+  border: 1.5px solid #e9ffcc;
+  color: #447800;
+  background: #ffffff;
+  transition: all .18s;
+}
+
+.filter-bar a:hover,
+.filter-bar a.active {
+  background: #1d3300;
+  color: #ffffff;
+  border-color: #1d3300;
+  text-decoration: none;
+}
+
+/* ── Tarjetas de anuncios ─────────────────────────────────── */
+.notice-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  width: 100%;
+  box-sizing: border-box; 
+}
+
+.notice-card {
+  background: #ffffff;
+  border: 1px solid #e9ffcc; /* Borde suave de la paleta */
+  border-radius: 8px;
+  padding: 1.5rem;
+  flex: 1 1 300px; 
+  max-height: 250px; 
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden; 
+  transition: box-shadow .2s, transform .15s;
+}
+
+.notice-card:hover {
+  box-shadow: 0 4px 14px rgba(29, 51, 0, 0.12);
+  transform: translateY(-2px);
+}
+
+/* Mantenemos la lógica de bordes de alerta/categorías solicitada */
+.notice-card.cat-urgente      { border-color: #ef4444; }
+.notice-card.cat-academico    { border-color: #8b5cf6; }
+.notice-card.cat-administrativo { border-color: #f59e0b; }
+.notice-card.cat-general      { border-color: #447800; } /* Ajustado a la paleta */
+
+.notice-card h2 {
+  font-size: 1.05rem;
+  margin-bottom: .4rem;
+}
+
+.notice-card h2 a { color: #1d3300; }
+.notice-card h2 a:hover { text-decoration: underline; }
+
+.notice-meta {
+  font-size: .8rem;
+  color: #447800;
+  display: flex;
+  gap: .8rem;
+  flex-wrap: wrap;
+  margin-bottom: .6rem;
+}
+
+.badge {
+  display: inline-block;
+  padding: .15rem .55rem;
+  border-radius: 20px;
+  font-size: .75rem;
+  font-weight: 600;
+  background: #e5d1ff; /* Tono lavanda sutil para badges comunes */
+  color: #1d3300;
+}
+
+/* Mantenidos por regla de negocio */
+.badge.urgente        { background: #fee2e2; color: #991b1b; }
+.badge.académico      { background: #ede9fe; color: #5b21b6; }
+.badge.administrativo { background: #fef3c7; color: #92400e; }
+
+.notice-preview {
+  margin-top: 0.5rem;
+  color: #1d3300;
+  font-size: 0.95rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 3; 
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ── Estado vacío ─────────────────────────────────────────── */
+.empty-state {
+  text-align: center;
+  padding: 3.5rem 1rem;
+  color: #447800;
+}
+
+.empty-state p { font-size: 1.05rem; margin-bottom: 1rem; }
+
+/* ── Detalle de anuncio ───────────────────────────────────── */
+.notice-detail {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 2rem 2.2rem;
+  box-shadow: 0 2px 8px rgba(29, 51, 0, 0.08);
+  border: 1px solid #e9ffcc;
+}
+
+.notice-detail h1 {
+  font-size: 1.5rem;
+  color: #1d3300;
+  margin-bottom: .7rem;
+}
+
+.notice-detail .notice-meta {
+  margin-bottom: 1.4rem;
+}
+
+.notice-body {
+  font-size: .97rem;
+  line-height: 1.75;
+  color: #1d3300;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+/* ── Acciones ─────────────────────────────────────────────── */
+.actions {
+  margin-top: 2rem;
+  display: flex;
+  gap: .7rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+/* ── Botones ──────────────────────────────────────────────── */
+.btn {
+  display: inline-block;
+  padding: .5rem 1.2rem;
+  border-radius: 7px;
+  font-size: .9rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  transition: opacity .18s, transform .12s;
+}
+
+.btn:hover { opacity: .85; transform: translateY(-1px); text-decoration: none; }
+
+.btn-primary  { background: #1d3300; color: #ffffff; }
+.btn-danger   { background: #ef4444; color: #ffffff; } /* Mantenido rojo */
+.btn-secondary { background: #e2ccff; color: #1d3300; } /* Lavanda como alternativa neutra/amigable */
+
+/* ── Formulario ───────────────────────────────────────────── */
+.form-card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 2rem 2.2rem;
+  box-shadow: 0 2px 8px rgba(29, 51, 0, 0.08);
+  max-width: 640px;
+  border: 1px solid #e9ffcc; /* Borde perimetral solicitado antes ajustado a paleta */
+}
+
+.form-card h1 {
+  font-size: 1.35rem;
+  color: #1d3300;
+  margin-bottom: 1.5rem;
+}
+
+.form-group {
+  margin-bottom: 1.1rem;
+}
+
+.form-group label {
+  display: block;
+  font-size: .88rem;
+  font-weight: 600;
+  color: #1d3300;
+  margin-bottom: .35rem;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: .55rem .8rem;
+  border: 1.5px solid #e9ffcc;
+  border-radius: 7px;
+  font-size: .95rem;
+  font-family: inherit;
+  color: #1d3300;
+  transition: border-color .18s;
+  background: #f4ffe5; /* Fondo de inputs adaptado a la suavidad visual */
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #447800;
+  background: #ffffff;
+}
+
+.form-group textarea { resize: vertical; min-height: 130px; }
+
+/* ── Footer ───────────────────────────────────────────────── */
+footer {
+  text-align: center;
+  padding: 2rem 1rem;
+  color: #447800;
+  font-size: .82rem;
+}
