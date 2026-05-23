@@ -1,0 +1,30 @@
+# Control de versiones e IDEs
+.git
+.gitignore
+.vscode
+.idea
+
+# Caché y archivos binarios de Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+.eggs/
+*.egg-info/
+
+# Entornos virtuales locales
+venv/
+env/
+.venv/
+
+# Datos dinamicos y bases de datos locales
+*.db
+*.sqlite
+noticeboard.db
+instance/
+
+#Documentacion local e informes
+*.docx
+*.pdf
+README.md
