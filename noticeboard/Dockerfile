@@ -8,7 +8,7 @@ ENV PYTHONDONTWRITEBYTECODE=1 \
     PORT=5000 \
     FLASK_DEBUG=0
 
-# 1. Crear el usuario del sistema con UID 1001 (Petición de la rúbrica)
+# 1. Crear el usuario del sistema con UID 1001
 RUN useradd -u 1001 -m noticeboarduser
 
 # 2. Definir el directorio de trabajo
