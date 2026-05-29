@@ -1,6 +1,6 @@
 FROM python:3.11-slim
 
-LABEL autor="Erick Andres Salinas" version="1.0" descripcion="Imagen docker centralizada para la aplicacion de anuncios"
+LABEL autor="Erick Andres Salinas" version="1.0.1" descripcion="Imagen docker centralizada para la aplicacion de anuncios"
 
 ENV PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1 \
